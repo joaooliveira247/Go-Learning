@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func array() {
 	var x [5]int
@@ -12,7 +15,7 @@ func array() {
 
 func anotherArrayExample() {
 	var x [5]float64
-	
+
 	x[0] = 98
 	x[1] = 93
 	x[2] = 77
@@ -108,6 +111,86 @@ func elementsExample() {
 	fmt.Println(name, ok)
 }
 
+func anotherMapAssignment() {
+	elements := map[string]string{
+		"H":  "Hydrogen",
+		"He": "Helium",
+		"Li": "Lithium",
+		"Be": "Beryllium",
+		"B":  "Boron",
+		"C":  "Carbon",
+		"N":  "Nitrogen",
+		"O":  "Oxygen",
+		"F":  "Fluorine",
+		"Ne": "Neon",
+	}
+
+	fmt.Println(elements)
+}
+
+func mapsInMaps() {
+	elements := map[string]map[string]string{
+		"H":  map[string]string{"name": "Hydrogen", "state": "gas"},
+		"He": map[string]string{"name": "Helium", "stage": "gas"},
+		"Li": map[string]string{"name": "Lithium", "stage": "solid"},
+		"Be": map[string]string{"name": "Beryllium", "stage": "solid"},
+		"B":  map[string]string{"name": "Boron", "stage": "solid"},
+		"C":  map[string]string{"name": "Carbon", "stage": "solid"},
+		"N":  map[string]string{"name": "Nitrogen", "stage": "gas"},
+		"O":  map[string]string{"name": "Oxigen", "stage": "gas"},
+		"F":  map[string]string{"name": "Fluorine", "stage": "gas"},
+		"Ne": map[string]string{"name": "Neon", "stage": "gas"},
+	}
+
+	if el, ok := elements["Li"]; ok {
+		fmt.Println(el, ok)
+	}
+}
+
+func ex1() {
+	xArray := [5]int8{
+		1, 2, 3, 4, 5,
+	}
+	fmt.Println(xArray[3])
+
+	xSlice := []int8{
+		1, 2, 3, 4, 5,
+	}
+	fmt.Println(xSlice[3])
+
+}
+
+func ex2() {
+	xSlice := make([]int, 3, 9)
+	fmt.Println(xSlice)
+	fmt.Println(len(xSlice))
+}
+
+func ex3() {
+	x := [6]string{"a", "b", "c", "d", "e", "f"}
+	fmt.Println(x[2:5])
+}
+
+func ex4() {
+	x := []int{
+		48, 96, 86, 68, 57, 82, 63, 70, 37, 34, 83, 27, 19, 97, 9, 17,
+	}
+
+	lowest := x[0]
+
+	// using for
+	for _, value := range x {
+		if value < lowest {
+			lowest = value
+		}
+	}
+	fmt.Println("for | ", lowest)
+
+	// using sort
+	sort.Ints(x)
+	fmt.Println(x[0])
+}
+
 func main() {
-	elementsExample()
+	ex4()
 }
