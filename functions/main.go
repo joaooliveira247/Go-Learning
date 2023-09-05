@@ -21,13 +21,22 @@ func f3() (int, int) {
 	return 5, 6
 }
 
-func variadicFunctions() {
-	
+func variadicFunctionAdd(args ...int) int {
+	total := 0
+
+	for _, v := range args {
+		total += v
+	}
+
+	return total
 }
 
 func main() {
 	// xs := []float64{98, 93, 77, 82, 83}
 	// fmt.Println(average(xs))
-	a := f2()
-	fmt.Println(a)
+	// a := f2()
+	// fmt.Println(a)
+	fmt.Println(variadicFunctionAdd(1, 2, 3, 4))
+	xs := []int{1, 2, 3, 4}
+	fmt.Println(variadicFunctionAdd(xs...))
 }
