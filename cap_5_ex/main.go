@@ -13,13 +13,13 @@ func sum(slice []int) int {
 }
 
 func half(x int) (int, bool) {
-	if x % 2 == 0 {
+	if x%2 == 0 {
 		return x / 2, true
 	}
 	return x / 2, false
 }
 
-func greatter(values ... int) int {
+func greatter(values ...int) int {
 	if len(values) < 1 {
 		return values[0]
 	}
@@ -48,8 +48,42 @@ func fib(n uint) uint {
 	case 1:
 		return 1
 	default:
-		return fib(n - 1) + fib(n - 2)
+		return fib(n-1) + fib(n-2)
 	}
+}
+
+func f() {
+	defer func() {
+		if x := recover(); x != nil {
+			fmt.Println("RECOVERED", x)
+		}
+	}()
+	panic("Panic!")
+}
+
+func memoryAddress() {
+	x := 2
+	fmt.Println(&x)
+}
+
+func pointerAtribute() {
+	x := new(int)
+	fmt.Println(*x)
+	*x = 2
+	fmt.Println(*x)
+}
+
+func newPointer() {
+	x := new(int)
+	fmt.Println(&x)
+}
+
+func square(x *int) {
+	*x = *x * *x
+}
+
+func swap(x *int, y *int) {
+	*x, *y = *y, *x
 }
 
 func main() {
@@ -57,5 +91,14 @@ func main() {
 	// for i := 0; i < 10 ; i++ {
 	// 	fmt.Println(a())
 	// }
-	fmt.Println(fib(31))
+	// fmt.Println(fib(31))
+	// newPointer()
+	// x := 2
+	// fmt.Println(x)
+	// square(&x)
+	// fmt.Println(x)
+	a := 1
+	b := 2
+	swap(&a, &b)
+	fmt.Println(a, b)
 }
