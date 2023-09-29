@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	examples.RunEx2()
+	examples.RunEx5()
 }
